@@ -151,7 +151,7 @@ def main():
     subgroup = BraidGroup(4, 'a')
    
     if sys.argv[1] == 'alice':
-        print('I\'m Alice.\nGenerating my random key... ')
+        print('I\'m Alice.\nGenerating my key... ')
         a_private = subgroup([1,2,-1,3])
         print('Done\n')
         
@@ -170,7 +170,7 @@ def main():
         print(private_shared)
     
     elif sys.argv[1] == 'bob':
-        print('I\'m Bob.\nGenerating my random key... ')
+        print('I\'m Bob.\nGenerating my key... ')
         b_private = subgroup([3,2,-1,-2])
         print('Done\n')
         
