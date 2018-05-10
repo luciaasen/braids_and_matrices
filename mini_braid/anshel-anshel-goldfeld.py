@@ -151,12 +151,13 @@ def main():
     subgroup = BraidGroup(4, 'a')
    
     if sys.argv[1] == 'alice':
-        print('I\'m Alice.\nGenerating my key... ')
+        print('The shared subgroup has generators ' + str(subgroup.gens()))
+        
+        print('\nI\'m Alice.\nGenerating my key... ')
         a_private = subgroup([1,2,-1,3])
         print('Done\n')
         
-        print('The shared subgroup has generators ' + str(subgroup.gens()))
-        print('I\'ll publicly send Bob all the generators conjugated by my private key.\n Send this to Bob:')
+        print('I\'ll publicly send Bob all the shared generators conjugated by my private key.\n Send this to Bob:')
         a_to_b = [conjugate(a_private, gen) for gen in subgroup.gens()]
         print(a_to_b)
 
@@ -164,18 +165,19 @@ def main():
         b_to_a = sys.stdin.readline()
         b_to_a = b_to_a[1:-2].split(',')
         
-        print('Generating shared private key... ')
+        print('Generating shared secret key... ')
         private_shared = private_shared_key(str(a_private), b_to_a, 'alice', subgroup)
-        print('Done.\nOK, I got our shared private key! It is ')
+        print('Done.\nOK, I got our shared symmetric key! It is ')
         print(private_shared)
     
     elif sys.argv[1] == 'bob':
-        print('I\'m Bob.\nGenerating my key... ')
+        print('The shared subgroup has generators ' + str(subgroup.gens()))
+        
+        print('\nI\'m Bob.\nGenerating my key... ')
         b_private = subgroup([3,2,-1,-2])
         print('Done\n')
         
-        print('The shared subgroup has generators ' + str(subgroup.gens()))
-        print('I\'ll publicly send Alice all the generators conjugated by my private key.\nSend this to Alice:')
+        print('I\'ll publicly send Alice all the shared generators conjugated by my private key.\nSend this to Alice:')
         b_to_a = [conjugate(b_private, gen) for gen in subgroup.gens()]
         print(b_to_a)
 
@@ -183,13 +185,13 @@ def main():
         a_to_b = sys.stdin.readline()
         a_to_b = a_to_b[1:-2].split(',')
 
-        print('Generating shared private key... ')
+        print('Generating shared secret key... ')
         private_shared = private_shared_key(str(b_private), a_to_b, 'bob', subgroup)
-        print('Done.\nOK, I got our shared private key! It is ')
+        print('Done.\nOK, I got our shared symmetric key! It is ')
         print(private_shared)
 
 
-    private_shared.plot(color=["red", "blue", "red", "blue"])
+    private_shared.plot(color=["red", "blue", "red", "blue"]).save('secret.png')
 
 
 
