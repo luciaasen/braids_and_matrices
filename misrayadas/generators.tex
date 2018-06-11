@@ -1,0 +1,104 @@
+
+\documentclass{article}
+
+
+\usepackage{lipsum}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{sectsty} % Para cambiar el tamanio de los titulos
+\usepackage[lmargin=1in, rmargin=0.75in]{geometry}
+\usepackage{xcolor}
+%\usepackage{hyperref}
+\usepackage[colorlinks = true,
+linkcolor = blue,
+urlcolor  = blue,
+citecolor = blue,
+anchorcolor = blue]{hyperref}
+
+\sectionfont{\LARGE}
+\newcommand\tab[1][0.6cm]{\hspace*{#1}}
+\newcommand\nl{\newline\tab}
+\renewcommand\labelenumi{\textbf{\arabic{enumi}.}}
+\renewcommand\labelenumii{\textbf{\theenumi.\arabic{enumii}.}}
+\renewcommand\thesection{EJERCICIO \arabic{section}} %Para que las secciones no se nombren como chapter.section (0.1, 0.2 etc)
+%\renewcommand\thesubsection{}
+\renewcommand\labelitemi{$\bullet$ }
+
+\setcounter{secnumdepth}{3}
+
+\linespread{1.2}
+
+\title{Mis rayadas con los generadores}
+
+\begin{document}
+	\maketitle
+	%\begin{center}
+	Tenemos unos hermosos potenciales generadores de $ SL(2, \mathbb{Z}) $, que son : 
+	$$
+	x = 
+	\begin{pmatrix}
+	1 & 1 \\
+	0 & 1 
+	\end{pmatrix},	
+	y = 
+	\begin{pmatrix}
+	1 & 0 \\
+	1 & 1 
+	\end{pmatrix}
+	$$
+	\nl
+	Si asumimos que $x, y$ generan todas las $M \in SL(2, \mathbb{Z}) $ con  $ \| M \|_\infty \leq 2 $, ¿podemos demostrar que $\langle x, y \rangle =  SL(2, \mathbb{Z})$? \nl
+	%\paragraph{} 
+	Veamos que sí, y chachi pistachi. 
+	Sea $$
+	A = 
+	\begin{pmatrix}
+	a_{11} & a_{12} \\
+	a_{21} & a_{22} 
+	\end{pmatrix} \in SL(2, \mathbb{Z}), $$ con  $ \| A \|_\infty = a_{11} > 2
+	$ \nl 
+	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que  $|a_{11}| \neq |a_{ij}|$ para todo $ij \neq 11$, y que no puede ser que $ |a_{22}| > |a_{12}|, |a_{21}|$. También es cierto que $a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\leq 0$.\nl Con esto, la vida es más fácil. \nl
+	O yo hago las cosas mal y me creo que es más fácil. Ya veremos. \nl
+	Con esto, se abren ante nosotros 4 fantásticos casos en función del orden de los $|a_{ij}|$, cada uno subdividido en otros 4 según el signo de los $a_{ij}$. No son 8 porque hacemos la trampa de que $a_{11} > 0$. \nl
+	Además, pa no repetirlo 16 veces, que quede claro que  $|a_{11}| = a, |a_{12}| = b, |a_{21}| = c, |a_{22}| = d $	.
+	\begin{enumerate}
+		\item  
+		$|a_{11}| > |a_{12}| \geq |a_{21}| \geq |a_{22}|  $ \nl
+		
+		\begin{enumerate}
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			AR = 
+			\begin{pmatrix}
+			a & b \\
+			c & d 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			1 & 0 \\
+			-1 & 1 
+			\end{pmatrix} = 
+			\begin{pmatrix}
+			a-b & b \\
+			c-d & c 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - b| &< a\\
+			|c - d| &< |c| < a\\
+			\end{aligned}
+			$$
+		\end{enumerate}
+		
+	\end{enumerate}
+	
+	
+	
+	%\end{center}
+\end{document}
