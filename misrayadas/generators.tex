@@ -34,7 +34,7 @@ anchorcolor = blue]{hyperref}
 \linespread{1.2}
 
 \title{Mis rayadas con los generadores}
-
+\date{}
 \begin{document}
 	\maketitle
 	%\begin{center}
@@ -62,16 +62,18 @@ anchorcolor = blue]{hyperref}
 	a_{21} & a_{22} 
 	\end{pmatrix} \in SL(2, \mathbb{Z}), $$ con  $ \| A \|_\infty = a_{11} > 2
 	$ \nl 
-	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que  $|a_{11}| \neq |a_{ij}|$ para todo $ij \neq 11$, y que no puede ser que $ |a_{22}| > |a_{12}|, |a_{21}|$. También es cierto que $a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\leq 0$.\nl Con esto, la vida es más fácil. \nl
+	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que, con las hipótesis anteriores,  $|a_{11}| \neq |a_{ij}|$ para todo $ij \neq 11$, y que no puede ser que $ |a_{22}| > |a_{12}|, |a_{21}|$. También es cierto que $a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0$.\nl Con esto, la vida es más fácil. \nl
 	O yo hago las cosas mal y me creo que es más fácil. Ya veremos. \nl
-	Se abren ante nosotros 4 fantásticos casos en función del orden de los $|a_{ij}|$, cada uno subdividido en otros 4 según el signo de los $a_{ij}$. No son 8 porque hacemos la trampa de que $a_{11} > 0$. \nl
+	Se abren ante nosotros 4 fantásticos caminos en función del orden relativo de los $|a_{ij}|$, cada uno subdividido en otros 4 según el signo de los $a_{ij}$. No son 8 porque hacemos la trampa de que $a_{11} > 0$. \nl
 	Además, pa no repetirlo 16 veces, que quede claro que  $|a_{11}| = a, |a_{12}| = b, |a_{21}| = c, |a_{22}| = d $	.
 	\begin{enumerate}
 		\item  
-		$|a_{11}| > |a_{12}| \geq |a_{21}| \geq |a_{22}|  $ \nl
+		$|a_{11}| > |a_{12}| \geq |a_{21}| \geq |a_{22}|   \equiv a > b \geq c \geq d$ \nl
 		
+		\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
+						  Como $c \geq d, |c - d| = |d - c|\leq |c| < a$ 
 		\begin{enumerate}
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$\nl
 			$$
 			\begin{aligned}[c]
 			AR = 
@@ -85,20 +87,409 @@ anchorcolor = blue]{hyperref}
 			\end{pmatrix} = 
 			\begin{pmatrix}
 			a-b & b \\
-			c-d & c 
+			c-d & d 
 			\end{pmatrix}
 			\end{aligned}
 			\qquad\qquad
 			\begin{aligned}[c]
 			|a - b| &< a\\
-			|c - d| &< |c| < a\\
+			|c - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			AR = 
+			\begin{pmatrix}
+			a & b \\
+			-c & -d 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			1 & 0 \\
+			-1 & 1 
+			\end{pmatrix} = 
+			\begin{pmatrix}
+			a-b & b \\
+			d-c & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - b| &< a\\
+			|d - c| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			AR = 
+			\begin{pmatrix}
+			a & -b \\
+			c & -d 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			1 & 0 \\
+			1 & 1 
+			\end{pmatrix} = 
+			\begin{pmatrix}
+			a-b & b \\
+			c-d & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - b| &< a\\
+			|c - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			AR = 
+			\begin{pmatrix}
+			a & -b \\
+			-c & d 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			1 & 0 \\
+			1 & 1 
+			\end{pmatrix} = 
+			\begin{pmatrix}
+			a-b & b \\
+			d-c & d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - b| &< a\\
+			|d - c| &< a\\
 			\end{aligned}
 			$$
 		\end{enumerate}
+		\item  
+		$|a_{11}| > |a_{12}| \geq |a_{22}| \geq |a_{21}| \equiv a > b \geq d \geq c $ \nl
+	
+		\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
+						  Como $d \geq c, |c - d| = |d - c| \leq |d| < a$ 
+		\begin{enumerate}
 		
+			 \item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
+			 $$
+			 \begin{aligned}[c]
+			 AR = 
+			 \begin{pmatrix}
+			 a & b \\
+			 c & d 
+			 \end{pmatrix} 
+			 \begin{pmatrix}
+			 1 & 0 \\
+			 -1 & 1 
+			 \end{pmatrix} = 
+			 \begin{pmatrix}
+			 a-b & b \\
+			 c-d & d 
+			 \end{pmatrix}
+			 \end{aligned}
+			 \qquad\qquad
+			 \begin{aligned}[c]
+			 |a - b| &< a\\
+			 |c - d| &< a\\
+			 \end{aligned}
+			 $$
+			 \item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
+			 $$
+			 \begin{aligned}[c]
+			 AR = 
+			 \begin{pmatrix}
+			 a & b \\
+			 -c & -d 
+			 \end{pmatrix} 
+			 \begin{pmatrix}
+			 1 & 0 \\
+			 -1 & 1 
+			 \end{pmatrix} = 
+			 \begin{pmatrix}
+			 a-b & b \\
+			 d-c & -d 
+			 \end{pmatrix}
+			 \end{aligned}
+			 \qquad\qquad
+			 \begin{aligned}[c]
+			 |a - b| &< a\\
+			 |d - c| &< a\\
+			 \end{aligned}
+			 $$
+			 \item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
+			 $$
+			 \begin{aligned}[c]
+			 AR = 
+			 \begin{pmatrix}
+			 a & -b \\
+			 c & -d 
+			 \end{pmatrix} 
+			 \begin{pmatrix}
+			 1 & 0 \\
+			 1 & 1 
+			 \end{pmatrix} = 
+			 \begin{pmatrix}
+			 a-b & b \\
+			 c-d & -d 
+			 \end{pmatrix}
+			 \end{aligned}
+			 \qquad\qquad
+			 \begin{aligned}[c]
+			 |a - b| &< a\\
+			 |c - d| &< a\\
+			 \end{aligned}
+			 $$
+			 \item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
+			 $$
+			 \begin{aligned}[c]
+			 AR = 
+			 \begin{pmatrix}
+			 a & -b \\
+			 -c & d 
+			 \end{pmatrix} 
+			 \begin{pmatrix}
+			 1 & 0 \\
+			 1 & 1 
+			 \end{pmatrix} = 
+			 \begin{pmatrix}
+			 a-b & b \\
+			 d-c & d 
+			 \end{pmatrix}
+			 \end{aligned}
+			 \qquad\qquad
+			 \begin{aligned}[c]
+			 |a - b| &< a\\
+			 |d - c| &< a\\
+			 \end{aligned}
+			 $$
+		\end{enumerate}
+		\item  
+		$|a_{11}| > |a_{21}| \geq |a_{12}| \geq |a_{22}| \equiv a > c \geq b \geq d $ \nl
+			
+		\textbf{Obs.} \nl Como $a > c, |a - c| < a$ \nl
+		Como $b \geq d, |b - d| = |d - b|\leq |b| < a$ 
+		\begin{enumerate}
+			
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & -1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & b \\
+			c & d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & b-d \\
+			c & d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|b - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & b \\
+			-c & -d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & b-d \\
+			c & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|b - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & -1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & -b \\
+			c & -d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & d-b \\
+			c & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|d - b| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & -b \\
+			-c & d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & d-b \\
+			-c & d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|d - b| &< a\\
+			\end{aligned}
+			$$
+		\end{enumerate}
+		\item  
+		$|a_{11}| > |a_{21}| \geq |a_{22}| \geq |a_{12}|  \equiv a > c \geq d \geq b $ \nl
+		
+		\textbf{Obs.} \nl Como $a > c, |a - c| < a$ \nl
+		Como $d \geq b, |b - d| = |d - b|\leq |b| < a$ 
+		\begin{enumerate}
+			
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & -1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & b \\
+			c & d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & b-d \\
+			c & d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|b - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & b \\
+			-c & -d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & b-d \\
+			c & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|b - d| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & -1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & -b \\
+			c & -d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & d-b \\
+			c & -d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|d - b| &< a\\
+			\end{aligned}
+			$$
+			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
+			$$
+			\begin{aligned}[c]
+			RA = 
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix} 
+			\begin{pmatrix}
+			a & -b \\
+			-c & d 
+			\end{pmatrix} 
+			= 
+			\begin{pmatrix}
+			a-c & d-b \\
+			-c & d 
+			\end{pmatrix}
+			\end{aligned}
+			\qquad\qquad
+			\begin{aligned}[c]
+			|a - c| &< a\\
+			|d - b| &< a\\
+			\end{aligned}
+			$$
+		\end{enumerate}
 	\end{enumerate}
-	
-	
+	\tab En todo caso, la matriz $R$ tiene $\|R\|_\infty = \|R^{-1}\|_\infty= 1$ \nl Así que podemos expresar $A$ como el producto de 2 matrices de norma $< a_{11}$, y con esto y un bizcocho, hasta mañana a las 8. \nl
+	Ah, bueno.
+	Si $\|A_2\|_\infty = a_{22}$, entonces en $A_2$ es la inversa de alguna de las matrices $A$ de arriba, y listo. Si $\|A_3\|_\infty = a_{12}$, entonces $A_3$ es el producto de alguna de las matrices $A$ por $\begin{pmatrix}
+	0 & -1 \\
+	1 & 0 
+	\end{pmatrix} $,
+	y también está listo. Y si $\|A_4\|_\infty = a_{21}$, entonces $A_4$ es el la inversa del producto de alguna de las matrices $A$ por $\begin{pmatrix}
+	0 & 1 \\
+	-1 & 0 
+	\end{pmatrix} $ \nl
+	Y si $\|A_{caca}\|_\infty = |a_{ij}|$, con $a_{ij} < 0$, pues mira, chico. Me estoy hartando. Pero $A_{caca}$ es el producto de alguna de las $A_i$ por  $\begin{pmatrix}
+	-1 & 0 \\
+	0 & -1 
+	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$.\nl \nl
+	Menuda pesadilla. Que las matrices de norma 1 y 2 están generadas por $x$ e $y$, te lo vas a creer porque sí. \nl PORQUE YO PASO DE LA LIFE :D
 	
 	%\end{center}
 \end{document}
