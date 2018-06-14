@@ -15,12 +15,13 @@
 \usepackage{xcolor}
 %\usepackage{hyperref}
 \usepackage[colorlinks = true,
-linkcolor = blue,
+linkcolor = black,
 urlcolor  = blue,
 citecolor = blue,
 anchorcolor = blue]{hyperref}
 
 \sectionfont{\LARGE}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}} % rpm is a smaller pm
 \newcommand\tab[1][0.6cm]{\hspace*{#1}}
 \newcommand\nl{\newline\tab}
 \renewcommand\labelenumi{\textbf{\arabic{enumi}.}}
@@ -52,7 +53,7 @@ anchorcolor = blue]{hyperref}
 	\end{pmatrix}
 	$$
 	\nl
-	Si asumimos que $x, y$ generan todas las $M \in SL(2, \mathbb{Z}) $ con  $ \| M \|_\infty \leq 2 $, ¿podemos demostrar que $\langle x, y \rangle =  SL(2, \mathbb{Z})$? \nl
+	Si asumimos que $x, y$ generan todas las $M \in SL(2, \mathbb{Z}) $ con  $ \| M \|_\infty \leq 1 $, ¿podemos demostrar que $\langle x, y \rangle =  SL(2, \mathbb{Z})$? \nl
 	%\paragraph{} 
 	Veamos que sí, y chachi pistachi. 
 	Sea $$
@@ -60,436 +61,311 @@ anchorcolor = blue]{hyperref}
 	\begin{pmatrix}
 	a_{11} & a_{12} \\
 	a_{21} & a_{22} 
-	\end{pmatrix} \in SL(2, \mathbb{Z}), $$ con  $ \| A \|_\infty = a_{11} > 2
+	\end{pmatrix} \in SL(2, \mathbb{Z}), $$ con  $ \| A \|_\infty = a_{11} > 1
 	$ \nl 
-	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que, con las hipótesis anteriores,  $|a_{11}| \neq |a_{ij}|$ para todo $ij \neq 11$, y que no puede ser que $ |a_{22}| > |a_{12}|, |a_{21}|$. También es cierto que $a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0$.\nl Con esto, la vida es más fácil. \nl
-	O yo hago las cosas mal y me creo que es más fácil. Ya veremos. \nl
-	Se abren ante nosotros 4 fantásticos caminos en función del orden relativo de los $|a_{ij}|$, cada uno subdividido en otros 4 según el signo de los $a_{ij}$. No son 8 porque hacemos la trampa de que $a_{11} > 0$. \nl
-	Además, pa no repetirlo 16 veces, que quede claro que  $|a_{11}| = a, |a_{12}| = b, |a_{21}| = c, |a_{22}| = d $	.
-	\begin{enumerate}
-		\item  
-		$|a_{11}| > |a_{12}| \geq |a_{21}| \geq |a_{22}|   \equiv a > b \geq c \geq d$ \nl
-		
-		\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
-						  Como $c \geq d, |c - d| = |d - c|\leq |c| < a$ 
-		\begin{enumerate}
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$\nl
-			$$
-			\begin{aligned}[c]
-			AR = 
-			\begin{pmatrix}
-			a & b \\
-			c & d 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			1 & 0 \\
-			-1 & 1 
-			\end{pmatrix} = 
-			\begin{pmatrix}
-			a-b & b \\
-			c-d & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - b| &< a\\
-			|c - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			AR = 
-			\begin{pmatrix}
-			a & b \\
-			-c & -d 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			1 & 0 \\
-			-1 & 1 
-			\end{pmatrix} = 
-			\begin{pmatrix}
-			a-b & b \\
-			d-c & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - b| &< a\\
-			|d - c| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			AR = 
-			\begin{pmatrix}
-			a & -b \\
-			c & -d 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			1 & 0 \\
-			1 & 1 
-			\end{pmatrix} = 
-			\begin{pmatrix}
-			a-b & b \\
-			c-d & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - b| &< a\\
-			|c - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			AR = 
-			\begin{pmatrix}
-			a & -b \\
-			-c & d 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			1 & 0 \\
-			1 & 1 
-			\end{pmatrix} = 
-			\begin{pmatrix}
-			a-b & b \\
-			d-c & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - b| &< a\\
-			|d - c| &< a\\
-			\end{aligned}
-			$$
-		\end{enumerate}
-		\item  
-		$|a_{11}| > |a_{12}| \geq |a_{22}| \geq |a_{21}| \equiv a > b \geq d \geq c $ \nl
+	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que, con las hipótesis anteriores,  
 	
-		\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
-						  Como $d \geq c, |c - d| = |d - c| \leq |d| < a$ 
-		\begin{enumerate}
-		
-			 \item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
-			 $$
-			 \begin{aligned}[c]
-			 AR = 
-			 \begin{pmatrix}
-			 a & b \\
-			 c & d 
-			 \end{pmatrix} 
-			 \begin{pmatrix}
-			 1 & 0 \\
-			 -1 & 1 
-			 \end{pmatrix} = 
-			 \begin{pmatrix}
-			 a-b & b \\
-			 c-d & d 
-			 \end{pmatrix}
-			 \end{aligned}
-			 \qquad\qquad
-			 \begin{aligned}[c]
-			 |a - b| &< a\\
-			 |c - d| &< a\\
-			 \end{aligned}
-			 $$
-			 \item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
-			 $$
-			 \begin{aligned}[c]
-			 AR = 
-			 \begin{pmatrix}
-			 a & b \\
-			 -c & -d 
-			 \end{pmatrix} 
-			 \begin{pmatrix}
-			 1 & 0 \\
-			 -1 & 1 
-			 \end{pmatrix} = 
-			 \begin{pmatrix}
-			 a-b & b \\
-			 d-c & -d 
-			 \end{pmatrix}
-			 \end{aligned}
-			 \qquad\qquad
-			 \begin{aligned}[c]
-			 |a - b| &< a\\
-			 |d - c| &< a\\
-			 \end{aligned}
-			 $$
-			 \item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
-			 $$
-			 \begin{aligned}[c]
-			 AR = 
-			 \begin{pmatrix}
-			 a & -b \\
-			 c & -d 
-			 \end{pmatrix} 
-			 \begin{pmatrix}
-			 1 & 0 \\
-			 1 & 1 
-			 \end{pmatrix} = 
-			 \begin{pmatrix}
-			 a-b & b \\
-			 c-d & -d 
-			 \end{pmatrix}
-			 \end{aligned}
-			 \qquad\qquad
-			 \begin{aligned}[c]
-			 |a - b| &< a\\
-			 |c - d| &< a\\
-			 \end{aligned}
-			 $$
-			 \item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
-			 $$
-			 \begin{aligned}[c]
-			 AR = 
-			 \begin{pmatrix}
-			 a & -b \\
-			 -c & d 
-			 \end{pmatrix} 
-			 \begin{pmatrix}
-			 1 & 0 \\
-			 1 & 1 
-			 \end{pmatrix} = 
-			 \begin{pmatrix}
-			 a-b & b \\
-			 d-c & d 
-			 \end{pmatrix}
-			 \end{aligned}
-			 \qquad\qquad
-			 \begin{aligned}[c]
-			 |a - b| &< a\\
-			 |d - c| &< a\\
-			 \end{aligned}
-			 $$
-		\end{enumerate}
-		\item  
-		$|a_{11}| > |a_{21}| \geq |a_{12}| \geq |a_{22}| \equiv a > c \geq b \geq d $ \nl
+	\begin{equation}\label{a}
+	|a_{11}| > |a_{ij}| \text{ para } ij \neq 11 
+	\end{equation}
+	\begin{equation}\label{b}
+	|a_{22}| \leq |a_{12}| \text{ ó } |a_{22}| \leq|a_{21}|
+	\end{equation}
+	\begin{equation}\label{c}
+	a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0\text{, para } a_{22} \neq 0
+	\end{equation}\nl
+	Con esto, la vida es más fácil. Y con lo que dijo Yago de las traspuestas, pues todavía más.
+	\nl Estudiamos $A$ en función de $a_{22}$, del orden relativo de los $|a_{ij}|$ y de sus signos.\nl
+	Sean $|a_{11}| = a, |a_{12}| = b, |a_{21}| = c, |a_{22}| = d $	.
+	\begin{enumerate}
+		\item $ a_{22} \neq 0$
+			\begin{enumerate}
+				
+			\item \label{1}  
+			$|a_{11}| > |a_{12}| \geq |a_{21}, \geq |a_{22}|   \equiv a > b \geq c, d$ \nl
 			
-		\textbf{Obs.} \nl Como $a > c, |a - c| < a$ \nl
-		Como $b \geq d, |b - d| = |d - b|\leq |b| < a$ 
-		\begin{enumerate}
+			\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
+							  Si $c \geq d, |c - d| = |d - c|\leq |c| < a$
+							  \nl 
+			Si  $d \geq c, |c - d| = |d - c|\leq |d| < a$
+			\begin{enumerate}
+				\item  $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} > 0 $\nl
+				$$
+				%\begin{aligned}[b]
+				AR = 
+				\begin{pmatrix}
+				a & b \\
+				c & d 
+				\end{pmatrix} 
+				\begin{pmatrix}
+				1 & 0 \\
+				-1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				a-b & b \\
+				c-d & d 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+				|a - b| &< a\\
+				|c - d| &< a\\
+				\end{aligned}
+				$$
+				\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} < 0$ \nl
+				$$
+				%\begin{aligned}[c]
+				AR = 
+				\begin{pmatrix}
+				a & b \\
+				-c & -d 
+				\end{pmatrix} 
+				\begin{pmatrix}
+				1 & 0 \\
+				-1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				a-b & b \\
+				d-c & -d 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+				|a - b| &< a\\
+				|d - c| &< a\\
+				\end{aligned}			
+				$$
+				\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} < 0$ \nl
+				$$
+				%\begin{aligned}[c]
+				AR = 
+				\begin{pmatrix}
+				a & -b \\
+				c & -d 
+				\end{pmatrix} 
+				\begin{pmatrix}
+				1 & 0 \\
+				1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				a-b & b \\
+				c-d & -d 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+				|a - b| &< a\\
+				|c - d| &< a\\
+				\end{aligned}
+				$$
+				\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} > 0$ \nl
+				$$
+				%\begin{aligned}[c]
+				AR = 
+				\begin{pmatrix}
+				a & -b \\
+				-c & d 
+				\end{pmatrix} 
+				\begin{pmatrix}
+				1 & 0 \\
+				1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				a-b & b \\
+				d-c & d 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+				|a - b| &< a\\
+				|d - c| &< a\\
+				\end{aligned}
+				$$
+			\end{enumerate}
 			
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & -1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & b \\
-			c & d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & b-d \\
-			c & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|b - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & 1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & b \\
-			-c & -d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & b-d \\
-			c & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|b - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & -1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & -b \\
-			c & -d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & d-b \\
-			c & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|d - b| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & 1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & -b \\
-			-c & d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & d-b \\
-			-c & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|d - b| &< a\\
-			\end{aligned}
-			$$
-		\end{enumerate}
-		\item  
-		$|a_{11}| > |a_{21}| \geq |a_{22}| \geq |a_{12}|  \equiv a > c \geq d \geq b $ \nl
-		
-		\textbf{Obs.} \nl Como $a > c, |a - c| < a$ \nl
-		Como $d \geq b, |b - d| = |d - b|\leq |b| < a$ 
-		\begin{enumerate}
+			En los cuatro casos, $\| AR \|_\infty < \|A\|_\infty$\nl
 			
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} \geq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
+			
+			\item  
+			$|a_{11}| > |a_{21}| \geq |a_{12}|, |a_{22}| \equiv a > c \geq b, d $ \nl
+			
+			
+			\textbf{Obs.} \nl  Si $|a_{21}| \geq |a_{12}|$, 
+			$
+			A^T = 
 			\begin{pmatrix}
-			1 & -1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & b \\
-			c & d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & b-d \\
-			c & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|b - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & 1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & b \\
-			-c & -d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & b-d \\
-			c & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|b - d| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} \leq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & -1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & -b \\
-			c & -d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & d-b \\
-			c & -d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|d - b| &< a\\
-			\end{aligned}
-			$$
-			\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} \geq 0$ \nl
-			$$
-			\begin{aligned}[c]
-			RA = 
-			\begin{pmatrix}
-			1 & 1 \\
-			0 & 1 
-			\end{pmatrix} 
-			\begin{pmatrix}
-			a & -b \\
-			-c & d 
-			\end{pmatrix} 
-			= 
-			\begin{pmatrix}
-			a-c & d-b \\
-			-c & d 
-			\end{pmatrix}
-			\end{aligned}
-			\qquad\qquad
-			\begin{aligned}[c]
-			|a - c| &< a\\
-			|d - b| &< a\\
-			\end{aligned}
-			$$
-		\end{enumerate}
-	\end{enumerate}
-	\tab En todo caso, la matriz $R$ tiene $\|R\|_\infty = \|R^{-1}\|_\infty= 1$ \nl Así que podemos expresar $A$ como el producto de 2 matrices de norma $< a_{11}$, y con esto y un bizcocho, hasta mañana a las 8. \nl
-	Ah, bueno.
-	Si $\|A_2\|_\infty = a_{22}$, entonces en $A_2$ es la inversa de alguna de las matrices $A$ de arriba, y listo. Si $\|A_3\|_\infty = a_{12}$, entonces $A_3$ es el producto de alguna de las matrices $A$ por $\begin{pmatrix}
+			a_{11} & a_{21} \\
+			a_{12} & a_{22} 
+			\end{pmatrix} $ 
+			está en las hipótesis de \textbf{\ref{1}}.\nl		
+			Por tanto,
+			$
+			\| A^TR \|_\infty < \|A\|_\infty 
+			$
+			, y entonces,
+			$ \| R^TA \|_\infty = \| \left( A^TR\right) ^T \|_\infty = \| A^TR \|_\infty < \|A\|_\infty 
+			$.\nl
+			
+			
+			\end{enumerate}	
+		\item $a_{22} = 0$
+			\begin{enumerate}
+				\item $a_{12} \geq 0$\nl
+				$$AR = 
+				\begin{pmatrix}
+					a & b \\
+					\pm c & 0 
+				\end{pmatrix} 
+				\begin{pmatrix}
+					1 & 0 \\
+					-1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+					a-b & b \\
+					\pm c & 0 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+					|a - b| &< a\\
+				\end{aligned}
+				$$
+				\item $a_{12} \leq 0$\nl
+				$$AR = 
+				\begin{pmatrix}
+				a & b \\
+				\pm c & 0 
+				\end{pmatrix} 
+				\begin{pmatrix}
+				1 & 0 \\
+				1 & 1 
+				\end{pmatrix} = 
+				\begin{pmatrix}
+				a-b & b \\
+				\pm c & 0 
+				\end{pmatrix}
+				%\end{aligned}
+				\qquad\qquad
+				\begin{aligned}[c]
+				|a - b| &< a\\
+				\end{aligned}
+				$$\nl
+			\end{enumerate}
+	\end{enumerate}			
+
+	Además, $\|R\|_\infty = \|R^T\|_\infty = \|R^{-1}\|_\infty= 1$, así que podemos expresar $A$ como el producto de 2 matrices de norma $< a_{11}$.\nl\nl
+	Y con esto y un bizcocho, hasta mañana a las 8 gracias a la magnífica inducción. \nl
+	Vale, no. ¿Y si $a_{11} < 0$? ¿Y si $\|A\|_\infty \neq |a_{11}|$? ¿Eh? ¿EH? ¿Qué patrañas me está contando? \nl
+	Mantenga usted la calma, señor. Ahora vamos.\nl\nl
+	Si $\|A_2\|_\infty = a_{22}$, entonces en $A_2$ es la inversa de alguna de las matrices $A$ de arriba, y listo.\nl
+	Si $\|A_3\|_\infty = a_{12}$, entonces $A_3$ es el producto de alguna de las matrices $A$ por
+	$\begin{pmatrix}
 	0 & -1 \\
 	1 & 0 
 	\end{pmatrix} $,
-	y también está listo. Y si $\|A_4\|_\infty = a_{21}$, entonces $A_4$ es el la inversa del producto de alguna de las matrices $A$ por $\begin{pmatrix}
+	y también está listo.\nl 
+	Y si $\|A_4\|_\infty = a_{21}$, entonces $A_4$ es el producto de
+	$\begin{pmatrix}
 	0 & 1 \\
 	-1 & 0 
-	\end{pmatrix} $ \nl
-	Y si $\|A_{caca}\|_\infty = |a_{ij}|$, con $a_{ij} < 0$, pues mira, chico. Me estoy hartando. Pero $A_{caca}$ es el producto de alguna de las $A_i$ por  $\begin{pmatrix}
+	\end{pmatrix} $ por alguna de las matrices $A$.\nl
+	Por último, si $\|A_{caca}\|_\infty = |a_{ij}|$, con $a_{ij} < 0$... Pues mira, chico. Tanta exhaustividad acaba con mi paciencia. $A_{caca}$ es el producto de alguna de las $A_i$ por  $\begin{pmatrix}
 	-1 & 0 \\
 	0 & -1 
-	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$.\nl \nl
-	Menuda pesadilla. Que las matrices de norma 1 y 2 están generadas por $x$ e $y$, te lo vas a creer porque sí. \nl PORQUE YO PASO DE LA LIFE :D
+	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$.\nl 
+	Lo que hay que aguantar, ¿eh?\nl 
+	Como me siento generosa, vamos ver que las matrices de norma 1 realmente están generadas por $x$ e $y$.
+	Como somos así de originales, repetimos método: asumimos que $\|A\|_\infty = a_{11}$, y los casos $\|A\|_\infty = \pm a_{ij}$ nos vienen de regalo.
+	\begin{enumerate}
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & 0 \\
+			0 & 1 
+			\end{pmatrix} 
+			= I
+			$
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix} 
+			= x
+			$
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & 0 \\
+			1 & 1 
+			\end{pmatrix} 
+			= y
+			$
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & -1 \\
+			0 & 1 
+			\end{pmatrix} 
+			= x^{-1}
+			$
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & -1 \\
+			1 & 0 
+			\end{pmatrix} 
+			= yx^{-1}
+			$			
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & 0 \\
+			-1 & 1 
+			\end{pmatrix} 
+			= y^{-1}
+			$
+			\item
+			$
+			A = 
+			\begin{pmatrix}
+			1 & 1 \\
+			-1 & 0 			
+			\end{pmatrix} 
+			= y^{-1}x			
+			$					
+		
+		\end{enumerate}
 	
-	%\end{center}
+	Por último, para poder usar el argumento de ``Si $\|A\|_\infty = a_{ij}$, entonces $A$ es el producto de bla, bla, bla...'', hace falta ver que
+	$\begin{pmatrix}
+	0 & -1 \\
+	1 & 0 
+	\end{pmatrix} = yx^{-1}y \in \langle x, y \rangle$\nl\nl
+	
+	
+	Ahora tengo sueño. Pero me hace ilu terminar esto, así que vamos a demostrar las observaciones anti quebraderos de cabeza del principio. Hating \LaTeX\space  learning curve.\nl	
+	(\ref{a})\nl 
+		 Si $\quad a_{12} = a_{11}$ (el caso $a_{21} = a_{11}$ es idéntico)\nl 
+		\tab $1 = |A| = |a_{11}(a_{22}-a_{21})| \geq 2|a_{22}-a_{21}|$, pero entonces $\frac{1}{2} \geq |a_{22}-a_{21}|$ y caca porque $a_{ij} \in\mathbb{Z} $.\nl
+		Si $\quad a_{22} = a_{11}$\nl
+		\tab $1 = |A| = |a_{11}^2-a_{12}a_{21}| \geq |a_{11}^2-(a_{11}-1)^2| = |2a_{11} - 1 | > 1$, caca.\nl\nl
+	(\ref{b})\nl
+		Si $\quad|a_{22}| > |a_{12}|, |a_{21}|\quad$  y utilizando que por (\ref{a}), $\quad |a_{11}| > |a_{22}|$, \nl 
+		\tab $1 = |A| = |a_{11}a_{22}-a_{12}a_{21})| > |a_{22}(a_{11}-a_{22})| \geq |1(2 - 1)| > 1 $, caca.\nl\nl
+	(\ref{c})\nl
+		Si $\quad a_{11}a_{22} > 0$, 	\nl $(\implies a_{11}a_{22} > 1,\quad$ porque $\quad a_{11} > 1, a_{22} \neq 0)$\nl\tab 
+		$1 = |A| = a_{11}a_{22} - a_{12}a_{21} > 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} > 0$\nl
+		Si $\quad a_{11}a_{22} < 0$, 	\nl $(\implies a_{11}a_{22} < - 1,\quad$ porque $\quad a_{11} > 1, a_{22} 	\neq 0)$\nl\tab 
+		$1 = |A| = a_{11}a_{22} - a_{12}a_{21} < - 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} < -2 < 0$\nl
+		
+	Jo. Seguro que hay algo mal, pero es que estoy muerta :c \nl
+	En fin...
+	A dormir.
 \end{document}
