@@ -26,8 +26,13 @@ anchorcolor = blue]{hyperref}
 \newcommand\nl{\newline\tab}
 \renewcommand\labelenumi{\textbf{\arabic{enumi}.}}
 \renewcommand\labelenumii{\textbf{\theenumi.\arabic{enumii}.}}
-\renewcommand\thesection{EJERCICIO \arabic{section}} %Para que las secciones no se nombren como chapter.section (0.1, 0.2 etc)
-%\renewcommand\thesubsection{}
+
+\renewcommand{\theenumii}{\textbf{.\arabic{enumii}.}}
+%\renewcommand{\labelenumi}{\alph{enumi}}
+
+
+\renewcommand\thesubsection{\arabic{subsection}.} 
+\renewcommand\thesection{\arabic{section}} %Para que las secciones no se nombren como chapter.section (0.1, 0.2 etc)
 \renewcommand\labelitemi{$\bullet$ }
 
 \setcounter{secnumdepth}{3}
@@ -53,7 +58,122 @@ anchorcolor = blue]{hyperref}
 	\end{pmatrix}
 	$$
 	\nl
-	Si asumimos que $x, y$ generan todas las $M \in SL(2, \mathbb{Z}) $ con  $ \| M \|_\infty \leq 1 $, ¿podemos demostrar que $\langle x, y \rangle =  SL(2, \mathbb{Z})$? \nl
+	\subsection{Caso base}
+	\tab Como me siento generosa, vamos ver que las matrices de norma 1 realmente están generadas por $x$ e $y$.\nl 
+	Asumimos que $\|A\|_\infty = a_{11} = 1$, y los casos $\|A\|_\infty = \pm a_{ij}$ nos vienen de regalo. Y si no te lo crees, pues te lees la inducción o te jodes. As you wish, oye. Estamos en un documento libre.
+	\begin{enumerate}
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & 0 \\
+		0 & 1 
+		\end{pmatrix} 
+		= I
+		$
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & 1 \\
+		0 & 1 
+		\end{pmatrix} 
+		= x
+		$
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & 0 \\
+		1 & 1 
+		\end{pmatrix} 
+		= y
+		$
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & -1 \\
+		0 & 1 
+		\end{pmatrix} 
+		= x^{-1}
+		$
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & -1 \\
+		1 & 0 
+		\end{pmatrix} 
+		= yx^{-1}
+		$			
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & 0 \\
+		-1 & 1 
+		\end{pmatrix} 
+		= y^{-1}
+		$
+		\item
+		$
+		A = 
+		\begin{pmatrix}
+		1 & 1 \\
+		-1 & 0 			
+		\end{pmatrix} 
+		= y^{-1}x			
+		$					
+		
+	\end{enumerate}
+	
+	Por último, para poder generalizar estos casos a  $\|A\|_\infty = \pm a_{ij}$ como se hará en la inducción, dejo caer que
+	$\begin{pmatrix}
+	0 & -1 \\
+	1 & 0 
+	\end{pmatrix} = yx^{-1}y \in \langle x, y \rangle$, y que $\begin{pmatrix}
+	0 & 1 \\
+	-1 & 0 
+	\end{pmatrix} = \left(yx^{-1}y\right)^{-1}$. Así que no me vengas luego con tonterías.\nl\nl
+	
+	
+	
+	\subsection{Antiquebraderos de cabeza}
+	\tab Es conveniente, por el bien de tu mollera, que antes de seguir observes que las siguientes afirmaciones son ciertas si $\|A\|_\infty = a_{11} > 1$:
+	
+	\begin{equation}\label{a}
+	|a_{11}| > |a_{ij}| \text{ para } ij \neq 11 
+	\end{equation}
+	%\tab 
+	\nl 
+	\textit{¿Por qué?}\nl 
+	Si $\quad a_{12} = a_{11}$ (el caso $a_{21} = a_{11}$ es idéntico),\nl 
+	\tab$1 = |A| = |a_{11}(a_{22}-a_{21})| \geq 2|a_{22}-a_{21}|$, pero entonces $\frac{1}{2} \geq |a_{22}-a_{21}|$ y caca porque $a_{ij} \in\mathbb{Z} $.\nl
+	Si $\quad a_{22} = a_{11} (\implies a_{12}, a_{21} < a_{11},\quad$ porque si no $\quad|A| \geq a_{11} > 1)$,\nl 
+	\tab $1 = |A| = |a_{11}^2-a_{12}a_{21}| \geq |a_{11}^2-(a_{11}-1)^2| = |2a_{11} - 1 | > 1$, caca.\nl\nl
+	\begin{equation}\label{b}
+	|a_{22}| \leq |a_{12}| \text{ ó } |a_{22}| \leq|a_{21}|
+	\end{equation}
+	%\tab 
+	\nl 
+	\textit{¿Por qué?}\nl 
+	 $\quad|a_{22}| > |a_{12}|, |a_{21}|\quad$  y utilizando que por (\ref{a}), $\quad |a_{11}| > |a_{22}|$, \nl 
+	\tab $1 = |A| = |a_{11}a_{22}-a_{12}a_{21})| > |a_{22}(a_{11}-a_{22})| \geq |1(2 - 1)| > 1 $, caca.\nl\nl
+	\begin{equation}\label{c}
+	a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0\text{, para } a_{22} \neq 0
+	\end{equation}
+	\nl 
+	\textit{¿Por qué?}\nl 
+	%\tab
+	Si $\quad a_{11}a_{22} > 0, (\implies a_{11}a_{22} > 1,\quad$ porque $\quad a_{11} > 1, a_{22} \neq 0)$\nl\tab 
+	$1 = |A| = a_{11}a_{22} - a_{12}a_{21} > 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} > 0$\nl
+	Si $\quad a_{11}a_{22} < 0 (\implies a_{11}a_{22} < - 1,\quad$ porque $\quad a_{11} > 1, a_{22} 	\neq 0)$\nl\tab 
+	$1 = |A| = a_{11}a_{22} - a_{12}a_{21} < - 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} < -2 < 0$\nl\nl 
+	Hating \LaTeX\space  learning curve.\nl	Más te vale apreciar que haya escrito esas demostraciones, aunque estén mal. Porque estoy llenando el documento de chapuzas para ello. -.-"\nl 	
+	En fin. Con esto, la vida es más fácil. Y con lo que dijo Yago de las traspuestas, pues todavía más.\nl
+	\subsection{Inducción }
+	\tab Si asumimos que $x, y$ generan todas las $M \in SL(2, \mathbb{Z}) $ con  $ \| M \|_\infty < a_{11} $, ¿podemos demostrar que $\langle x, y \rangle =  SL(2, \mathbb{Z})$? 
 	%\paragraph{} 
 	Veamos que sí, y chachi pistachi. 
 	Sea $$
@@ -63,26 +183,14 @@ anchorcolor = blue]{hyperref}
 	a_{21} & a_{22} 
 	\end{pmatrix} \in SL(2, \mathbb{Z}), $$ con  $ \| A \|_\infty = a_{11} > 1
 	$ \nl 
-	Lo primero para ahorrarnos quebraderos de cabeza es darnos cuenta de que, con las hipótesis anteriores,  
-	
-	\begin{equation}\label{a}
-	|a_{11}| > |a_{ij}| \text{ para } ij \neq 11 
-	\end{equation}
-	\begin{equation}\label{b}
-	|a_{22}| \leq |a_{12}| \text{ ó } |a_{22}| \leq|a_{21}|
-	\end{equation}
-	\begin{equation}\label{c}
-	a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0\text{, para } a_{22} \neq 0
-	\end{equation}\nl
-	Con esto, la vida es más fácil. Y con lo que dijo Yago de las traspuestas, pues todavía más.
-	\nl Estudiamos $A$ en función de $a_{22}$, del orden relativo de los $|a_{ij}|$ y de sus signos.\nl
+	Estudiamos $A$ en función de $a_{22}$, del orden relativo de los $|a_{ij}|$ y de sus signos.\nl
 	Sean $|a_{11}| = a, |a_{12}| = b, |a_{21}| = c, |a_{22}| = d $	.
 	\begin{enumerate}
 		\item $ a_{22} \neq 0$
 			\begin{enumerate}
 				
 			\item \label{1}  
-			$|a_{11}| > |a_{12}| \geq |a_{21}, \geq |a_{22}|   \equiv a > b \geq c, d$ \nl
+			$|a_{11}| > |a_{12}| \geq |a_{21}, |a_{22}|   \equiv a > b \geq c, d$ \nl
 			
 			\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
 							  Si $c \geq d, |c - d| = |d - c|\leq |c| < a$
@@ -197,7 +305,7 @@ anchorcolor = blue]{hyperref}
 			a_{11} & a_{21} \\
 			a_{12} & a_{22} 
 			\end{pmatrix} $ 
-			está en las hipótesis de \textbf{\ref{1}}.\nl		
+			está en las hipótesis de \textbf{\ref{1}}\nl		
 			Por tanto,
 			$
 			\| A^TR \|_\infty < \|A\|_\infty 
@@ -233,7 +341,7 @@ anchorcolor = blue]{hyperref}
 				\item $a_{12} \leq 0$\nl
 				$$AR = 
 				\begin{pmatrix}
-				a & b \\
+				a & -b \\
 				\pm c & 0 
 				\end{pmatrix} 
 				\begin{pmatrix}
@@ -253,11 +361,11 @@ anchorcolor = blue]{hyperref}
 			\end{enumerate}
 	\end{enumerate}			
 
-	Además, $\|R\|_\infty = \|R^T\|_\infty = \|R^{-1}\|_\infty= 1$, así que podemos expresar $A$ como el producto de 2 matrices de norma $< a_{11}$.\nl\nl
+	Además, $\|R\|_\infty = \|R^T\|_\infty = \|R^{-1}\|_\infty = \|\left( R^T\right) ^{-1}\|_\infty=1$, así que podemos expresar $A$ como el producto de 2 matrices de norma $< a_{11}$.\nl\nl
 	Y con esto y un bizcocho, hasta mañana a las 8 gracias a la magnífica inducción. \nl
 	Vale, no. ¿Y si $a_{11} < 0$? ¿Y si $\|A\|_\infty \neq |a_{11}|$? ¿Eh? ¿EH? ¿Qué patrañas me está contando? \nl
-	Mantenga usted la calma, señor. Ahora vamos.\nl\nl
-	Si $\|A_2\|_\infty = a_{22}$, entonces en $A_2$ es la inversa de alguna de las matrices $A$ de arriba, y listo.\nl
+	Mantenga usted la calma, viejo loco. Ahora vamos.\nl\nl
+	Si $\|A_2\|_\infty = a_{22}$, entonces $A_2$ es la inversa de alguna de las matrices $A$ de arriba, y listo.\nl
 	Si $\|A_3\|_\infty = a_{12}$, entonces $A_3$ es el producto de alguna de las matrices $A$ por
 	$\begin{pmatrix}
 	0 & -1 \\
@@ -272,100 +380,7 @@ anchorcolor = blue]{hyperref}
 	Por último, si $\|A_{caca}\|_\infty = |a_{ij}|$, con $a_{ij} < 0$... Pues mira, chico. Tanta exhaustividad acaba con mi paciencia. $A_{caca}$ es el producto de alguna de las $A_i$ por  $\begin{pmatrix}
 	-1 & 0 \\
 	0 & -1 
-	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$.\nl 
-	Lo que hay que aguantar, ¿eh?\nl 
-	Como me siento generosa, vamos ver que las matrices de norma 1 realmente están generadas por $x$ e $y$.
-	Como somos así de originales, repetimos método: asumimos que $\|A\|_\infty = a_{11}$, y los casos $\|A\|_\infty = \pm a_{ij}$ nos vienen de regalo.
-	\begin{enumerate}
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & 0 \\
-			0 & 1 
-			\end{pmatrix} 
-			= I
-			$
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & 1 \\
-			0 & 1 
-			\end{pmatrix} 
-			= x
-			$
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & 0 \\
-			1 & 1 
-			\end{pmatrix} 
-			= y
-			$
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & -1 \\
-			0 & 1 
-			\end{pmatrix} 
-			= x^{-1}
-			$
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & -1 \\
-			1 & 0 
-			\end{pmatrix} 
-			= yx^{-1}
-			$			
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & 0 \\
-			-1 & 1 
-			\end{pmatrix} 
-			= y^{-1}
-			$
-			\item
-			$
-			A = 
-			\begin{pmatrix}
-			1 & 1 \\
-			-1 & 0 			
-			\end{pmatrix} 
-			= y^{-1}x			
-			$					
-		
-		\end{enumerate}
+	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$. Lo que hay que aguantar, ¿eh? 	\nl 		
+	Jo. Estoy muerta :c... A dormir.
 	
-	Por último, para poder usar el argumento de ``Si $\|A\|_\infty = a_{ij}$, entonces $A$ es el producto de bla, bla, bla...'', hace falta ver que
-	$\begin{pmatrix}
-	0 & -1 \\
-	1 & 0 
-	\end{pmatrix} = yx^{-1}y \in \langle x, y \rangle$\nl\nl
-	
-	
-	Ahora tengo sueño. Pero me hace ilu terminar esto, así que vamos a demostrar las observaciones anti quebraderos de cabeza del principio. Hating \LaTeX\space  learning curve.\nl	
-	(\ref{a})\nl 
-		 Si $\quad a_{12} = a_{11}$ (el caso $a_{21} = a_{11}$ es idéntico)\nl 
-		\tab $1 = |A| = |a_{11}(a_{22}-a_{21})| \geq 2|a_{22}-a_{21}|$, pero entonces $\frac{1}{2} \geq |a_{22}-a_{21}|$ y caca porque $a_{ij} \in\mathbb{Z} $.\nl
-		Si $\quad a_{22} = a_{11}$\nl
-		\tab $1 = |A| = |a_{11}^2-a_{12}a_{21}| \geq |a_{11}^2-(a_{11}-1)^2| = |2a_{11} - 1 | > 1$, caca.\nl\nl
-	(\ref{b})\nl
-		Si $\quad|a_{22}| > |a_{12}|, |a_{21}|\quad$  y utilizando que por (\ref{a}), $\quad |a_{11}| > |a_{22}|$, \nl 
-		\tab $1 = |A| = |a_{11}a_{22}-a_{12}a_{21})| > |a_{22}(a_{11}-a_{22})| \geq |1(2 - 1)| > 1 $, caca.\nl\nl
-	(\ref{c})\nl
-		Si $\quad a_{11}a_{22} > 0$, 	\nl $(\implies a_{11}a_{22} > 1,\quad$ porque $\quad a_{11} > 1, a_{22} \neq 0)$\nl\tab 
-		$1 = |A| = a_{11}a_{22} - a_{12}a_{21} > 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} > 0$\nl
-		Si $\quad a_{11}a_{22} < 0$, 	\nl $(\implies a_{11}a_{22} < - 1,\quad$ porque $\quad a_{11} > 1, a_{22} 	\neq 0)$\nl\tab 
-		$1 = |A| = a_{11}a_{22} - a_{12}a_{21} < - 1 - a_{12}a_{21} \quad\implies\quad a_{12}a_{21} < -2 < 0$\nl
-		
-	Jo. Seguro que hay algo mal, pero es que estoy muerta :c \nl
-	En fin...
-	A dormir.
 \end{document}
