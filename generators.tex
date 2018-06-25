@@ -57,7 +57,7 @@ anchorcolor = blue]{hyperref}
 	1 & 1 
 	\end{pmatrix}
 	$$
-	\nl
+	
 	\subsection{Caso base}
 	\tab Como me siento generosa, vamos ver que las matrices de norma 1 realmente están generadas por $x$ e $y$.\nl 
 	Asumimos que $\|A\|_\infty = a_{11} = 1$, y los casos $\|A\|_\infty = \pm a_{ij}$ nos vienen de regalo. Y si no te lo crees, pues te lees la inducción o te jodes. As you wish, oye. Estamos en un documento libre.
@@ -132,10 +132,14 @@ anchorcolor = blue]{hyperref}
 	$\begin{pmatrix}
 	0 & -1 \\
 	1 & 0 
-	\end{pmatrix} = yx^{-1}y \in \langle x, y \rangle$, y que $\begin{pmatrix}
+	\end{pmatrix} = yx^{-1}y $, que $\begin{pmatrix}
 	0 & 1 \\
 	-1 & 0 
-	\end{pmatrix} = \left(yx^{-1}y\right)^{-1}$. Así que no me vengas luego con tonterías.\nl\nl
+	\end{pmatrix} = \left(yx^{-1}y\right)^{-1}$ y que 
+	$\begin{pmatrix}
+	-1 & 0 \\
+	0 & -1 
+	\end{pmatrix} = \left(y^{-1}x^2\right)^2$.\nl  Vaya, que las tres están en $ \langle x, y \rangle$. Así que no me vengas luego con tonterías.\nl\nl
 	
 	
 	
@@ -158,7 +162,7 @@ anchorcolor = blue]{hyperref}
 	%\tab 
 	\nl 
 	\textit{¿Por qué?}\nl 
-	 $\quad|a_{22}| > |a_{12}|, |a_{21}|\quad$  y utilizando que por (\ref{a}), $\quad |a_{11}| > |a_{22}|$, \nl 
+	 Si $\quad|a_{22}| > |a_{12}|, |a_{21}|\quad$  y utilizando que por (\ref{a}), $\quad |a_{11}| > |a_{22}|$, \nl 
 	\tab $1 = |A| = |a_{11}a_{22}-a_{12}a_{21})| > |a_{22}(a_{11}-a_{22})| \geq |1(2 - 1)| > 1 $, caca.\nl\nl
 	\begin{equation}\label{c}
 	a_{11}a_{22}\geq 0 \iff a_{12}a_{21}\geq 0\text{, para } a_{22} \neq 0
@@ -190,14 +194,14 @@ anchorcolor = blue]{hyperref}
 			\begin{enumerate}
 				
 			\item \label{1}  
-			$|a_{11}| > |a_{12}| \geq |a_{21}, |a_{22}|   \equiv a > b \geq c, d$ \nl
+			$|a_{11}| > |a_{12}| \geq |a_{21}|, |a_{22}|   \equiv a > b \geq c, d$ \nl
 			
 			\textbf{Obs.} \nl Como $a > b, |a - b| < a$ \nl
 							  Si $c \geq d, |c - d| = |d - c|\leq |c| < a$
 							  \nl 
 			Si  $d \geq c, |c - d| = |d - c|\leq |d| < a$
 			\begin{enumerate}
-				\item  $a_{11} > 2, a_{12} \geq 0, a_{21} \geq 0, a_{22} > 0 $\nl
+				\item  $a_{11} > 1, a_{12} \geq 0, a_{21} \geq 0, a_{22} > 0 $\nl
 				$$
 				%\begin{aligned}[b]
 				AR = 
@@ -220,7 +224,7 @@ anchorcolor = blue]{hyperref}
 				|c - d| &< a\\
 				\end{aligned}
 				$$
-				\item $a_{11} > 2, a_{12} \geq 0, a_{21} \leq 0, a_{22} < 0$ \nl
+				\item $a_{11} > 1, a_{12} \geq 0, a_{21} \leq 0, a_{22} < 0$ \nl
 				$$
 				%\begin{aligned}[c]
 				AR = 
@@ -243,7 +247,7 @@ anchorcolor = blue]{hyperref}
 				|d - c| &< a\\
 				\end{aligned}			
 				$$
-				\item $a_{11} > 2, a_{12} \leq 0, a_{21} \geq 0, a_{22} < 0$ \nl
+				\item $a_{11} > 1, a_{12} \leq 0, a_{21} \geq 0, a_{22} < 0$ \nl
 				$$
 				%\begin{aligned}[c]
 				AR = 
@@ -266,7 +270,7 @@ anchorcolor = blue]{hyperref}
 				|c - d| &< a\\
 				\end{aligned}
 				$$
-				\item $a_{11} > 2, a_{12} \leq 0, a_{21} \leq 0, a_{22} > 0$ \nl
+				\item $a_{11} > 1, a_{12} \leq 0, a_{21} \leq 0, a_{22} > 0$ \nl
 				$$
 				%\begin{aligned}[c]
 				AR = 
@@ -381,6 +385,6 @@ anchorcolor = blue]{hyperref}
 	-1 & 0 \\
 	0 & -1 
 	\end{pmatrix} $. Que aunque a mí me costó mucho, el ordenador me dijo en un plis plas que sí estaba generada por $x$ e $y$. Lo que hay que aguantar, ¿eh? 	\nl 		
-	Jo. Estoy muerta :c... A dormir.
+	Jo. Estoy muerta :c... A momi.
 	
 \end{document}
