@@ -206,11 +206,12 @@ anchorcolor = blue]{hyperref}
 	c\bmod 2 & d \bmod 4
 	\end{pmatrix}
 	\end{align*}
-	(Qué feo queda escrito lo de los módulos. D: )
+	(Qué feo queda escrito lo de los módulos. D: ) \newline
+	Por cierto, $\mathbb{S} = Ker(\phi)$
 	\begin{itemize}
 		\item \textbf{\texttt {Objetivo:}} Entender 
 		$ \bigslant{SL_2(\mathbb{Z})}{\mathbb{S}}$ \nl
-		\item \textbf{\texttt {Primer intento:}} Parecía que las clases de equivalencia de $ \bigslant{SL_2(\mathbb{Z})}{\mathbb{S}}$ tenían algo que ver con $\phi(\mathcal{M})$ (yo diría que dependen únicamente de $\phi(\mathcal{M})$, pero no con la boca muy llena... ) Por ejemplo, %$$
+		\item \textbf{\texttt {Primer intento:}} Parecía que las clases de equivalencia de $ \bigslant{SL_2(\mathbb{Z})}{\mathbb{S}}$ tenían algo que ver, dada una matriz $\mathcal{M}$, con $\phi(\mathcal{M})$  (yo diría que dependen únicamente de $\phi(\mathcal{M})$, pero no con la boca muy llena... ) Por ejemplo, %$$
 		
 		\begin{align*}
 		\phi(\mathcal{M}) = 
@@ -246,10 +247,10 @@ anchorcolor = blue]{hyperref}
 		 \end{align*}
 		 
 		 \tab Esta unión de conjuntos también ha quedado feísima.\nl 
-		 ¿Es porque las phis son demasiado peques al lado de los paréntesis? Yo qué sé. Estética. En fin.\nl 
+		 ¿Es porque las $\phi$ son demasiado peques al lado de los paréntesis? Yo qué sé. Estética. \nl En fin.\nl 
 		  El caso es que ese $\subseteq $ es un $=$, ya que 
 		 $\text{para ninguna } \mathcal{N} \in \overline{\mathcal{N}} \neq \overline{\mathcal{M}} , \text{ se cumple que }\phi(\mathcal{N}) \in \phi(\overline{\mathcal{M}})$ \nl
-		 Y para todos los posibles $\phi(\mathcal{M}),$ tenemos que $ \overline{\mathcal{N}}  = \phi^{-1}\left( \text{algún subconjunto de } SL_2(\mathbb{Z}/ 4\mathbb{Z}) \right)$ \nl\nl
+		 E igual que hemos hecho con esta $\mathcal{M}$, para todos los posibles $\phi(\mathcal{N})$ podemos ver que $ \overline{\mathcal{N}}  = \phi^{-1}\left( \text{algún subconjunto de } SL_2(\mathbb{Z}/ 4\mathbb{Z}) \right)$ \nl\nl
 		 \textbf{\texttt {Problema:}} No tiene por qué ser cierto que $
 		 \begin{pmatrix}
 		 a & b \\
@@ -265,8 +266,21 @@ anchorcolor = blue]{hyperref}
 		 \end{center}
 	 	
 	 	\item \textbf{\texttt {Cosas random antes de mirar el núcleo:}} $$ \varphi(\mathbb{S}) \cong \mathbb{Z}/ 2\mathbb{Z} \times \mathbb{Z}/ 2\mathbb{Z}, $$
-	 	\tab Por otro lado, parece que $\frac{1}{4}$ de los elementos de $\mathbb{S}$ están en $Ker(\varphi)$. Que no sé si es $\frac{1}{4}$ de verdad, pero vaya. Aquellos donde los coeficientes $b$ y $c$ no son sólo pares, sino también múltiplos de 4. \nl Creo que esta observación es completamente inútil, pero me ha parecido curiosa.\nl  También me gustaría saber si sabiendo que $b$ y $c$ son pares, las matrices con $b$ y $c$ múltiplos de 4 son realmente  $\frac{1}{4}$ de $\mathbb{S}$. Estudiando índices hasta el $\infty$ y más allá.
-	 	
+	 	\tab Por otro lado, parece que $\frac{1}{4}$ de los elementos de $\mathbb{S}$ están en $Ker(\varphi)$. Que no sé si es $\frac{1}{4}$ de verdad, pero vaya. Aquellos donde los coeficientes $b$ y $c$ no son sólo pares, sino también múltiplos de 4. \nl Creo que esta observación es completamente inútil, pero me ha parecido curiosa.\nl  También me gustaría saber si sabiendo que $b$ y $c$ son pares, las matrices con $b$ y $c$ múltiplos de 4 son realmente  $\frac{1}{4}$ de $\mathbb{S}$. Estudiando índices hasta el $\infty$ y más allá.\nl
+	 	Inciso: Lunes por la mañana, repasando esto antes de enviarlo. Acabo de decidir que no es que `` $\frac{1}{4}$ de los elementos de $\mathbb{S}$ estén en $Ker(\varphi)$ '', sino que $\frac{1}{4}$ de los elementos de $\mathbb{S}$ 	¡\textbf{son} $Ker(\varphi)$! Porque $$
+	 	\varphi(\mathcal{M}) =  
+	 	\begin{pmatrix}
+	 	1 & 0 \\
+	 	0 & 1 
+	 	\end{pmatrix} \implies 
+	 	\phi(\mathcal{M}) =  
+	 	\begin{pmatrix}
+	 	1 & 0 \\
+	 	0 & 1 
+	 	\end{pmatrix} \implies
+	 	\mathcal{M} \in \mathbb{S}
+	 	$$ 
+	 	Por qué es como la quinta vez que me pongo a mirar $Ker(\varphi)$ y hasta ahora no veo algo tan tonto como eso, ¿eh? \begin{center} \CreateStressedFace \end{center} 
 	 	\item \textbf{\texttt {Siguiente, un intento de ver el núcleo:}} 
 	 	Imponiendo que $
 	 	\mathcal{M} \in SL_2(\mathbb{Z}), \text{ y que } \varphi(\mathcal{M}) = 
@@ -291,9 +305,9 @@ anchorcolor = blue]{hyperref}
 	 	
 	 	\item \textbf{\texttt {Haciendo caso a Yago:}} En algún momento, Yago me dijo algo así como que podía conocer los elementos de $SL_2(\mathbb{Z}/4\mathbb{Z})$ usando el ordenador. \nl
 	 	 A mi me parece que no, porque puedo sacar $\varphi$ de todas las matrices hasta cierta longitud de palabra, pero no tengo manera de saber si he terminado (si cojo matrices de mayor longitud, podría ser que $\varphi(\mathcal{M})$ fuera un nuevo elemento de $SL_2(\mathbb{Z}/4\mathbb{Z})$ que no me hubiera salido todavía). \nl 
-	 	 Aun así, si $\mathcal{C}_n = \left\{ \text{matrices con longitud de palabra (según is generadores)} \leq n\right\}$	 	 
+	 	 Aun así, si $\mathcal{C}_n = \left\{ \text{matrices con longitud de palabra} \leq n\text{ según mis generadores }\right\}$	 	 
 	 	 \begin{align*}
-	 	  | \varphi(\mathcal{C}_1) | &= 5 \\	 	 
+	 	  | \varphi(\mathcal{C}_1) | &= 4 \\	 	 
 	 	  | \varphi(\mathcal{C}_2) | &= 15 \\	 	 
 	 	  | \varphi(\mathcal{C}_3) | &= 31 \\	 	 
 	 	  | \varphi(\mathcal{C}_4) | &= 43 \\	 	 
@@ -311,6 +325,6 @@ anchorcolor = blue]{hyperref}
 
 	Espero haber transmitido adecuadamente mi inutilidad.\nl
 	Help.\nl 
-	Y así, queda consumido mi Domingo. El día que escriba en \LaTeX,  la mitad de rápido que escribo en papel, me daré un premio. 
+	Y así, queda consumido mi Domingo.\nl El día que escriba en \LaTeX,  la mitad de rápido que escribo en papel, me daré un premio.
 	
 \end{document}
