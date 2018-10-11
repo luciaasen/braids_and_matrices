@@ -1,0 +1,469 @@
+
+\documentclass{article}
+
+
+\usepackage{lipsum}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{sectsty} % Para cambiar el tamanio de los titulos
+\usepackage[lmargin=1in, rmargin=0.75in]{geometry}
+\usepackage{xcolor}
+%\usepackage{hyperref}
+\usepackage[colorlinks = true,
+linkcolor = black,
+urlcolor  = blue,
+citecolor = blue,
+anchorcolor = blue]{hyperref}
+
+\sectionfont{\LARGE}
+\newcommand{\rpm}{\raisebox{.2ex}{$\scriptstyle\pm$}} % rpm is a smaller pm
+\newcommand\tab[1][0.6cm]{\hspace*{#1}}
+\newcommand\nl{\newline\tab}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\suchthat}{\;\ifnum\currentgrouptype=16 \middle\fi|\;}
+
+\renewcommand\labelenumi{\textbf{\arabic{enumi}.}}
+\renewcommand\labelenumii{\textbf{\theenumi.\arabic{enumii}.}}
+
+\renewcommand{\theenumii}{\textbf{.\arabic{enumii}.}}
+%\renewcommand{\labelenumi}{\alph{enumi}}
+
+
+\renewcommand\thesubsection{\arabic{subsection}.} 
+\renewcommand\thesection{\arabic{section}} %Para que las secciones no se nombren como chapter.section (0.1, 0.2 etc)
+\renewcommand\labelitemi{$\bullet$ }
+
+\setcounter{secnumdepth}{3}
+
+\linespread{1.2}
+
+\title{No sé muy bien ni qué quiero hacer.}
+\date{}
+\begin{document}
+	\maketitle
+	%\begin{center}
+	Voy a estudiar $ \bigslant{SL_2(\mathbb{Z})}{\mathbb{S}}$, donde  
+	$$\mathbb{S} = 
+	\langle
+	\begin{pmatrix}
+	1 & 2 \\
+	0 & 1 
+	\end{pmatrix},
+	\begin{pmatrix}
+	1 & 0 \\
+	2 & 1 
+	\end{pmatrix}
+	\rangle = \left\{ 
+	\begin{pmatrix}
+	a & b \\
+	c & d 
+	\end{pmatrix}
+	\suchthat
+	\begin{split}
+	a \equiv d \equiv 1 &\mod 4 \\
+	b \equiv c \equiv 0 &\mod 2 
+	\end{split}
+	\right\}
+	$$
+	\nl
+	Para ello, voy a hacer un estudio exhaustivo y nada agradable de la clase de equivalencia donde acabaría cierta matriz $	\mathcal{M}$ en función de sus coeficientes módulo 2 y módulo 4.\nl
+	A lo mejor no la hago taaaan exhaustiva, y sólo hago unos pocos casos.
+	\nl 
+	
+	\subsection{Las clases de equivalencia}
+	Sea $ \mathcal{M} = 
+	\begin{pmatrix}
+	a & b \\
+	c & d 
+	\end{pmatrix} $
+	\begin{enumerate}
+		\item Si $b \equiv c \equiv 0 \mod 2$:
+		\begin{align*}
+		\phi(\mathcal{M}) = 
+		\begin{pmatrix}
+			x & 0 \\
+			0 & t
+		\end{pmatrix}  & \implies
+		\phi(\overline{\mathcal{M}}) = 
+		\phi(\mathcal{M}\mathbb{S}) =
+		\begin{pmatrix}
+			x & 0 \\
+			0 & t 
+		\end{pmatrix}\\ 
+		& 	\implies \varphi(\overline{\mathcal{M}}) = 	
+		\left\{
+		\begin{pmatrix}
+		x & 0 \\
+		0 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x & 0 \\
+		2 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x & 2 \\
+		0 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x & 2 \\
+		2 & t 
+		\end{pmatrix}
+		\right\}	
+		\\ & \implies \overline{\mathcal{M}} \subseteq 
+		\varphi^{-1}\left(	\left\{
+		\begin{pmatrix}
+		x & y \\
+		z & t 
+		\end{pmatrix}
+		\suchthat
+		(y,z) \in \{0,2\}
+		\right\}	
+		\right) 
+		\end{align*}
+		Lo chuliguay es que $\subseteq $ es un $=$, ya que ninguna clase $\overline{\mathcal{N}} \neq \overline{\mathcal{M}}$ tiene un representante $\mathcal{N} \in \overline{\mathcal{N}}$ tal que  $\varphi(\mathcal{N}) \in \varphi(\overline{\mathcal{M}})$. No voy a repetir ese argumento, y a partir de ahora pondré siempre los $=$.\newline \newline	El caso es que 
+		$
+		\overline{\mathcal{M}} =
+		\varphi^{-1}\left( 
+		\left\{
+		\begin{pmatrix}
+		x & y \\
+		z & t 
+		\end{pmatrix}
+		\suchthat
+		(y,z) \in \{0,2\}
+		\right\}	
+		\right)$ y que como 
+		$ \begin{pmatrix}
+		x & y \\
+		z & t 
+		\end{pmatrix} 
+		\in SL_2(\mathbb{Z}/ 4\mathbb{Z}) $, sabemos que $(x, t) = (1,1)$ o $(x, t) = (3,3)$.\nl 
+		
+		\begin{enumerate}
+			\item Si $(x, t) = (1,1)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{1}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			1 &0 \\
+			0 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 0 \\
+			2 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 2 \\
+			0 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 2 \\
+			2 & 1 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+			
+			\item  Si $(x, t) = (3,3)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{2}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			3 &0 \\
+			0 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 0 \\
+			2 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 2 \\
+			0 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 2 \\
+			2 & 3 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+			
+		\end{enumerate}
+		
+		\item Si $b \equiv0 \mod 2,  c \equiv 1 \mod 2$:
+		\begin{align*}
+		\phi(\mathcal{M}) = 
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t 
+		\end{pmatrix}  & \implies
+		\phi(\overline{\mathcal{M}}) = 
+		\phi(\mathcal{M}\mathbb{S}) = \left\{
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t+2 
+		\end{pmatrix},
+		\right\} \\ & \implies
+		\varphi(\overline{\mathcal{M}}) =
+		\left\{
+		\begin{pmatrix}
+		x & y \\
+		z & n
+		\end{pmatrix} \suchthat 	
+		\begin{aligned}
+		n &\in \{t, t+2\} \\
+		y &\in \{0, 2\} \\
+		z &\in \{1, 3\} 
+		\end{aligned}					
+		\right\} 
+		\end{align*}
+		
+		En este caso, tenemos que 
+		$
+		\overline{\mathcal{M}} =
+		\varphi^{-1}\left( 
+		\left\{
+		\begin{pmatrix}
+		x & y \\
+		z & n
+		\end{pmatrix}
+		\suchthat
+		\begin{aligned}
+		n &\in \{t, t+2\} \\
+		y &\in \{0, 2\} \\
+		z &\in \{1, 3\} 
+		\end{aligned}
+		\right\}	
+		\right)$ y que como 
+		$ \begin{pmatrix}
+		x & y \\
+		z & n 
+		\end{pmatrix} 
+		\in SL_2(\mathbb{Z}/ 4\mathbb{Z}) $, sabemos que $(x, t) = (1,1), (1,3), (3,1) $ o $ (3,3)$.\newline Según esto:
+		\begin{enumerate}
+			\item Si $(x,t) = (1,1)$ o $(x,t) = (1,3)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{3}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			1 & 0 \\
+			1 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 0 \\
+			3 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 2 \\
+			1 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 2 \\
+			3 & 3 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+			\item Si $(x,t) = (3,1)$ o $(x,t) = (3,3)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{4}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			3 & 2 \\
+			1 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 2 \\
+			3 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 0 \\
+			1 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 0 \\
+			3 & 3 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+		\end{enumerate}
+	
+	
+		\item Si $b \equiv 1 \mod 2,  c \equiv 0 \mod 2$:
+		\begin{align*}
+		\phi(\mathcal{M}) = 
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t 
+		\end{pmatrix}  & \implies
+		\phi(\overline{\mathcal{M}}) = 
+		\phi(\mathcal{M}\mathbb{S}) = \left\{
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x+2 & 1 \\
+		0 & t 
+		\end{pmatrix},
+		\right\} \\ & \implies
+		\varphi(\overline{\mathcal{M}}) =
+		\left\{
+		\begin{pmatrix}
+		m & y \\
+		z & t
+		\end{pmatrix} \suchthat 	
+		\begin{aligned}
+		m &\in \{x, x+2\} \\
+		y &\in \{1, 3\} \\
+		z &\in \{0, 2\} 
+		\end{aligned}					
+		\right\} 
+		\end{align*}
+		
+		En este caso, tenemos que 
+		$
+		\overline{\mathcal{M}} =
+		\varphi^{-1}\left( 
+		\left\{
+		\begin{pmatrix}
+		m & y \\
+		z & t
+		\end{pmatrix}
+		\suchthat
+		\begin{aligned}
+		m &\in \{x, x+2\} \\
+		y &\in \{1, 3\} \\
+		z &\in \{0, 2\} 
+		\end{aligned}
+		\right\}	
+		\right)$ y que como 
+		$ \begin{pmatrix}
+		m & y \\
+		z & t 
+		\end{pmatrix} 
+		\in SL_2(\mathbb{Z}/ 4\mathbb{Z}) $, sabemos que $(x, t) = (1,1), (1,3), (3,1) $ o $ (3,3)$.\newline Según esto:
+		\begin{enumerate}
+			\item Si $(x,t) = (1,1)$ o $(x,t) = (3,1)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{5}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			1 & 1 \\
+			0 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 3 \\
+			0 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 1 \\
+			2 & 1 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 3 \\
+			2 & 1 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+			\item Si $(x,t) = (1,3)$ o $(x,t) = (3,3)$, tenemos una clase de equivalencia 
+			$$
+			\overline{\mathcal{M}_{6}} = 
+			\varphi^{-1}\left( 
+			\left\{
+			\begin{pmatrix}
+			1 & 1 \\
+			2 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			1 & 3 \\
+			2 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 1 \\
+			0 & 3 
+			\end{pmatrix},
+			\begin{pmatrix}
+			3 & 3 \\
+			0 & 3 
+			\end{pmatrix},
+			\right\}	
+			\right) $$
+		\end{enumerate}
+		\item Si $b \equiv c \equiv 1 \mod 2$:
+		\begin{align*}
+		\phi(\mathcal{M}) = 
+		\begin{pmatrix}
+		x & 1 \\
+		1 & t 
+		\end{pmatrix}  & \implies
+		\phi(\overline{\mathcal{M}}) = 
+		\phi(\mathcal{M}\mathbb{S}) = \left\{
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x & 0 \\
+		1 & t+2 
+		\end{pmatrix},
+		\begin{pmatrix}
+		x+2 & 0 \\
+		1 & t 
+		\end{pmatrix}, 
+		\begin{pmatrix}
+		x+2 & 0 \\
+		1 & t+2 
+		\end{pmatrix}
+		\right\} \\
+		& \implies
+		\varphi(\overline{\mathcal{M}}) =
+		\left\{
+		\begin{pmatrix}
+		m & y \\
+		z & n
+		\end{pmatrix} \suchthat 	
+		\begin{aligned}
+		m &\in \{x, x+2\} \\
+		n &\in \{t, t+2\} \\
+		y, z &\in \{1, 3\} 
+		\end{aligned}					
+		\right\}
+		\end{align*}
+		Ahora, tenemos que 
+		$
+		\overline{\mathcal{M}} =
+		\varphi^{-1}\left( 
+		\left\{
+		\begin{pmatrix}
+		m & y \\
+		z & n
+		\end{pmatrix}
+		\suchthat 
+		\begin{aligned}
+		m &\in \{x, x+2\} \\
+		n &\in \{t, t+2\} \\
+		y, z &\in \{1, 3\} 
+		\end{aligned}		
+		\right\}	
+		\right)$ 		
+		y que como 
+		$ \begin{pmatrix}
+		m & y \\
+		z & n
+		\end{pmatrix} 
+		\in SL_2(\mathbb{Z}/ 4\mathbb{Z}) $, sabemos que $(x, t) = (1,1), (1,3), (3,1) $ o $ (3,3)$.
+	\end{enumerate}
+	
+\end{document}
